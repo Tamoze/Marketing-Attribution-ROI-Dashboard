@@ -113,7 +113,7 @@ Activities Completed:
 
 
 # DAY-3 : PHASE-2:-
-# Day 3 – Data Cleaning (Phase 2)
+# Day 3 – Data Cleaning & Data Quality EDA (Phase 2)
 
 ### Objectives
 
