@@ -193,3 +193,85 @@ Created production-ready cleaned datasets:
 * clean_products.csv
 
 These datasets are now ready for data modeling, ER diagram creation, PostgreSQL implementation, and attribution analysis.
+
+
+# Day 4 – Phase 3: Data Modeling & ER Diagram Design
+
+## Objective
+The objective of this phase was to transform the cleaned marketing attribution dataset into a structured analytical model suitable for SQL querying, attribution analysis, KPI calculations, and BI dashboard development.
+
+## Tasks Performed
+
+### 1. Primary Key Validation
+Validated the unique identifiers for all tables:
+
+- events → event_id
+- transactions → transaction_id
+- customers → customer_id
+- campaigns → campaign_id
+- products → product_id
+
+### 2. Foreign Key Relationship Identification
+Identified logical relationships between fact and dimension tables.
+
+Relationships:
+
+- events.customer_id → customers.customer_id
+- events.campaign_id → campaigns.campaign_id
+- events.product_id → products.product_id
+
+- transactions.customer_id → customers.customer_id
+- transactions.campaign_id → campaigns.campaign_id
+- transactions.product_id → products.product_id
+
+### 3. Cardinality Analysis
+Validated relationship types:
+
+- Customer → Events (1:M)
+- Customer → Transactions (1:M)
+- Campaign → Events (1:M)
+- Campaign → Transactions (1:M)
+- Product → Events (1:M)
+- Product → Transactions (1:M)
+
+### 4. Fact and Dimension Table Identification
+
+Fact Tables:
+- events
+- transactions
+
+Dimension Tables:
+- customers
+- campaigns
+- products
+
+### 5. Star Schema Design
+Designed a star schema architecture for business intelligence reporting and attribution analysis.
+
+Fact Tables:
+- Fact_Events
+- Fact_Transactions
+
+Dimension Tables:
+- Dim_Customers
+- Dim_Campaigns
+- Dim_Products
+
+### 6. Data Dictionary Creation
+Documented all tables, columns, data types, business definitions, and relationships.
+
+### 7. ER Diagram Documentation
+Created the logical ER structure and documented entity relationships for PostgreSQL implementation.
+
+## Key Deliverables
+
+- Data Model Design
+- Relationship Mapping
+- Cardinality Validation
+- Star Schema Architecture
+- Data Dictionary
+- ER Diagram Documentation
+
+## Outcome
+
+The dataset is now fully prepared for PostgreSQL implementation, advanced SQL querying, attribution modeling, KPI calculation, and Power BI dashboard development.
