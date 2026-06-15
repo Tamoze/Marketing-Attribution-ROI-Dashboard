@@ -275,3 +275,102 @@ Created the logical ER structure and documented entity relationships for Postgre
 ## Outcome
 
 The dataset is now fully prepared for PostgreSQL implementation, advanced SQL querying, attribution modeling, KPI calculation, and Power BI dashboard development.
+
+
+
+# Day 5 – Phase 4: PostgreSQL Implementation & Attribution Modeling
+
+## Objective
+
+The objective of this phase was to implement the marketing attribution data model in PostgreSQL, establish relationships between tables, and build attribution models using advanced SQL window functions.
+
+## Tasks Performed
+
+### 1. Database Creation
+
+Created PostgreSQL database:
+
+- marketing_attribution_db
+
+### 2. Table Creation
+
+Created tables:
+
+- events
+- transactions
+- customers
+- campaigns
+- products
+
+### 3. Data Import
+
+Imported cleaned CSV files into PostgreSQL.
+
+Successfully loaded:
+
+- 2,000,000 event records
+- 103,127 transaction records
+- 100,000 customer records
+- 50 campaign records
+- 2,000 product records
+
+### 4. Row Count Validation
+
+Validated row counts after import.
+
+### 5. Referential Integrity Validation
+
+Verified:
+
+- Customer relationships
+- Campaign relationships
+- Product relationships
+
+Resolved campaign_id = 0 issue by creating a Non-Campaign record.
+
+### 6. Foreign Key Creation
+
+Created foreign key constraints between:
+
+- Events ↔ Customers
+- Events ↔ Campaigns
+- Events ↔ Products
+
+- Transactions ↔ Customers
+- Transactions ↔ Campaigns
+- Transactions ↔ Products
+
+### 7. Customer Journey Sequencing
+
+Used ROW_NUMBER() window function to sequence customer touchpoints chronologically.
+
+### 8. First Touch Attribution
+
+Identified the first marketing touchpoint responsible for customer acquisition.
+
+### 9. Last Touch Attribution
+
+Identified the final interaction before conversion.
+
+### 10. Linear Attribution
+
+Distributed conversion credit equally across all customer touchpoints.
+
+### 11. Revenue Attribution Analysis
+
+Calculated:
+
+- Revenue by Campaign
+- Revenue by Channel
+- Revenue by Objective
+
+## Key Insights
+
+- Organic traffic generated the highest first-touch and last-touch customer volume.
+- Non-campaign traffic contributed significant revenue.
+- Reactivation campaigns generated the highest revenue among marketing objectives.
+- Attribution models successfully identified channel contribution across the customer journey.
+
+## Outcome
+
+A fully functional PostgreSQL attribution engine was built using advanced SQL techniques, preparing the project for ROAS, ROI, CAC calculation, and Power BI dashboard development.
