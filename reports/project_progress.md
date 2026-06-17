@@ -128,6 +128,29 @@ At this stage, the project has successfully completed:
 
 Data Engineering + Initial Data Validation Phase
 
+## Dataset Overview
+Campaigns: 50 rows × 7 columns
+Customers: 100,000 rows × 7 columns
+Events: 2,000,000 rows × 12 columns
+Products: 2,000 rows × 6 columns
+Transactions: 103,127 rows × 9 columns
+
+## Key Data Quality Summary
+Duplicates:
+- campaigns: 0
+- customers: 0
+- events: 0
+- products: 0
+- transactions: 0
+
+Missing Values:
+- events.product_id
+- events.device_type
+- transactions.product_id
+- transactions.gross_revenue
+
+The dataset is generally clean with no duplicate records across all tables. Missing values are concentrated in behavioral event and transaction linkage fields, which is expected in real-world marketing attribution data due to incomplete tracking and optional event logging.
+
 ## Week 2
 
 ## 10. Data Cleaning Assessment
