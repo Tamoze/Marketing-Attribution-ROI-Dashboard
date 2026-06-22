@@ -162,8 +162,5 @@ Marketing-Attribution-ROI-Dashboard/
 
 ---
 
-## Author
+little update ad_spend table
 
-**Temitope Amos Agboola**
-
-Data Analytics Intern Project – Infotact Solutions
