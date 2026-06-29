@@ -237,3 +237,6 @@ __pycache__/
 # Environment files
 .env
 .venv/
+# Allow small dashboard output files
+!outputs/
+!outputs/*.csv
