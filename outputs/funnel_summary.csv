@@ -1,0 +1,5 @@
+event_type,event_count,previous_stage_count,conversion_from_previous_percent,dropoff_count
+view,1043573,,,
+click,379008,1043573.0,36.32,664565.0
+add_to_cart,284370,379008.0,75.03,94638.0
+purchase,103127,284370.0,36.27,181243.0
