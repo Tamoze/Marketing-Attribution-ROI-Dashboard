@@ -253,9 +253,98 @@ This ensures analytical accuracy while preserving real-world behavioral patterns
 * Stage 2: Data Cleaning and Preparation — Completed
 * Stage 3: Attribution Analysis and KPI Development — Ready to Begin
 
-### Next Steps
+### Week 3
 
-* Create Attribution Analysis notebook (`03_attribution_analysis.ipynb`).
-* Build customer journey and touchpoint analysis.
-* Develop attribution models.
-* Calculate marketing performance KPIs and ROI metrics.
+# Stage 3: Customer Journey Analysis & KPI Development (Completed)
+
+## Activities Completed
+- Customer journey analysis performed
+- Conversion tracking defined
+- Key KPIs computed:
+  - Total Customers
+  - Converting Customers
+  - Conversion Rate
+  - Total Touchpoints
+- Traffic source distribution analyzed
+
+## Outcome
+A clear understanding of customer behavior and baseline marketing performance metrics was established.
+
+---
+
+# Stage 4A: KPI Development & Attribution Foundation (Completed)
+
+## Activities Completed
+- Multi-touch attribution concepts introduced
+- First-touch and last-touch logic explored
+- Linear attribution concept developed
+- Initial comparison of attribution models performed
+
+## Outcome
+A foundational understanding of attribution modeling was established for advanced SQL implementation.
+
+---
+
+# Stage 4B: SQL Attribution & Performance Modeling (Completed)
+
+## Activities Completed
+
+### SQL Data Integration
+- Joined `events`, `customers`, and `campaigns` tables
+- Built unified customer journey dataset
+
+### SQL Window Functions
+- `ROW_NUMBER()` used for sequencing customer journeys
+- `COUNT()` used to calculate total touchpoints
+
+### Attribution Modeling
+- Linear attribution weights calculated in SQL
+- First-touch and last-touch models derived in Python
+
+### Channel Performance Analysis
+- Attribution performance by traffic source analyzed
+- Engagement distribution across channels evaluated
+
+### Campaign Performance Analysis
+- Campaign channel effectiveness evaluated
+- Campaign objectives analyzed across customer journey stages
+
+## Outcome
+A fully structured SQL-based analytical dataset was created, enabling multi-touch attribution analysis and marketing performance evaluation.
+
+---
+
+# Key Achievements Across Stages 3–4
+
+- Built complete customer journey dataset
+- Implemented multi-touch attribution modeling
+- Applied SQL JOINs and Window Functions
+- Developed channel performance insights
+- Analyzed campaign effectiveness
+- Created BI-ready dataset for dashboard development
+
+---
+
+# Overall Project Status
+
+| Stage | Status |
+|------|--------|
+| Stage 1 – Project Setup | Completed |
+| Stage 2 – Data Cleaning | Completed |
+| Stage 3 – KPI Development | Completed |
+| Stage 4A – Attribution Foundation | Completed |
+| Stage 4B – SQL Attribution Modeling | Completed |
+
+---
+
+# Next Stage
+
+## Stage 5: Power BI Dashboard Development
+
+Focus areas:
+- Dashboard design and layout
+- KPI visualization
+- Attribution comparison charts
+- Funnel analysis
+- Channel performance dashboards
+- Campaign performance dashboards
