@@ -11,4 +11,4 @@ This week focuses on data ingestion and exploratory data analysis.
 Tasks include:
 - checking missing UTM values
 - standardizing timestamps
-- removing duplicate user IDs
+- removing duplicate user IDs.
