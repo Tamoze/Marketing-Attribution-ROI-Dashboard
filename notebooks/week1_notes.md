@@ -1,7 +1,7 @@
 # Week 1 Notes
 
 ## My Task
-I am working on Week 1 of Project 1: Marketing Attribution.
+I am working on Week 1 of Project 1: Marketing Attribution
 
 ## Week 1 Goals
 - Understand the dataset
