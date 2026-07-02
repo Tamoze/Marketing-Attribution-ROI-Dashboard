@@ -71,4 +71,4 @@ Dashboard creation in Power BI with KPI cards and channel comparison visuals.
 - Compare contribution across channels.
 - Support marketing budget decisions with clear KPI reporting.
 ## Dashboard Preview
-![Dashboard Screenshot](assets/screenshot/dashboard-week4.png)
+![Dashboard Screenshot](assets/dashboard-week4.png)
