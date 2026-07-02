@@ -53,7 +53,7 @@ Dashboard creation in Power BI with KPI cards and channel comparison visuals.
 ## Visuals Included
 - KPI cards
 - Channel revenue bar chart
-- Channel revenue pie chart
+- Channel revenue pie chart.
 
 ## GitHub Notes
 - Raw datasets are excluded using `.gitignore`.
