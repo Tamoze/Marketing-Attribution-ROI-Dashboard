@@ -45,10 +45,10 @@ Metric calculations such as revenue, orders, unique customers, and ROAS.
 Dashboard creation in Power BI with KPI cards and channel comparison visuals.
 
 ## Key Dashboard Metrics
-- Total Revenue
-- Total Orders
-- Unique Customers
-- ROAS
+- Total Revenue.
+- Total Orders.
+- Unique Customers.
+- ROAS.
 
 ## Visuals Included
 - KPI cards
