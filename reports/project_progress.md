@@ -348,3 +348,134 @@ Focus areas:
 - Funnel analysis
 - Channel performance dashboards
 - Campaign performance dashboards
+
+# Stage 5: Business Intelligence Modeling Progress Report
+
+## Objective
+
+Stage 5 focused on transforming the cleaned and analytically enriched marketing attribution dataset into a Business Intelligence-ready dimensional model optimized for Power BI. The objective was to create a scalable data architecture that supports customer journey analysis, attribution modeling, financial reporting, and interactive dashboard development.
+
+---
+
+## Activities Completed
+
+### Business Intelligence Data Modeling
+
+A dimensional data model was designed and implemented to support marketing analytics and executive reporting. During development, the model evolved from an initial Star Schema design into a **Fact Constellation (Galaxy Schema)** to better separate customer journey analytics from financial transaction analysis while maintaining shared dimensions.
+
+---
+
+### Fact Tables Created
+
+#### FactCustomerJourney
+
+Developed a customer journey fact table containing every customer touchpoint across the marketing funnel.
+
+Supports:
+
+- Customer journey analysis
+- Multi-touch attribution
+- Conversion funnel analysis
+- Channel performance analysis
+
+---
+
+#### FactTransactions
+
+Created a transaction fact table containing completed customer purchases and conversion events.
+
+Supports:
+
+- Revenue analysis
+- Conversion reporting
+- ROI calculation
+- ROAS calculation
+- Financial performance evaluation
+
+---
+
+### Dimension Tables Prepared
+
+The following dimension tables were created and optimized for Power BI:
+
+- **DimCustomer**
+- **DimCampaign**
+- **DimCampaignSpend**
+- **DimDate** (to be generated within Power BI)
+
+---
+
+### Campaign Spend Modeling
+
+A synthetic campaign spend model was developed using campaign characteristics including:
+
+- Campaign duration
+- Marketing channel
+- Campaign objective
+- Expected uplift
+- Objective weighting
+
+The resulting marketing spend dataset enables realistic financial analysis through ROI and ROAS calculations.
+
+---
+
+### Power BI Data Preparation
+
+Business Intelligence datasets were exported to the `data/processed` directory for integration into Power BI.
+
+Prepared datasets include:
+
+- FactCustomerJourney.csv
+- FactTransactions.csv
+- DimCustomer.csv
+- DimCampaign.csv
+- DimCampaignSpend.csv
+
+---
+
+### Data Model Relationships
+
+Relationships were established between fact and dimension tables to support interactive filtering and efficient reporting across multiple business processes.
+
+The completed model supports:
+
+- Customer analysis
+- Campaign analysis
+- Attribution analysis
+- Revenue reporting
+- Marketing investment analysis
+
+---
+
+## Key Achievements
+
+Stage 5 successfully:
+
+- Designed a scalable dimensional BI model
+- Implemented a Fact Constellation (Galaxy Schema)
+- Created separate behavioral and financial fact tables
+- Developed a synthetic marketing spend model
+- Prepared Power BI-ready datasets
+- Established optimized relationships between fact and dimension tables
+- Built a strong foundation for dashboard development
+
+---
+
+## Business Value
+
+The completed Business Intelligence model enables marketing stakeholders to:
+
+- Analyze customer journeys across multiple channels
+- Compare attribution models
+- Measure campaign effectiveness
+- Evaluate marketing investment efficiency
+- Calculate ROI and ROAS accurately
+- Support executive-level decision-making through interactive dashboards
+
+---
+
+## Outcome of Stage 5
+
+Stage 5 successfully transitioned the project from data preparation and analytical modeling into a Business Intelligence environment by implementing a scalable Fact Constellation (Galaxy Schema). The resulting dimensional model provides a robust foundation for interactive Power BI dashboards and ensures accurate reporting of customer behavior, campaign performance, revenue, conversions, ROI, and ROAS.
+
+The project is now fully prepared for **Stage 6: Power BI Dashboard Development**.
