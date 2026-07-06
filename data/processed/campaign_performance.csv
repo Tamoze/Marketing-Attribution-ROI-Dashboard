@@ -1,0 +1,22 @@
+campaign_channel,objective,total_touchpoints,unique_customers
+No Campaign,Not Assigned,1000251,99995
+Paid Search,Cross-sell,119501,69731
+Affiliate,Reactivation,79991,55120
+Email,Reactivation,79917,55135
+Email,Retention,60301,45191
+Affiliate,Retention,60191,45282
+Display,Reactivation,59913,45120
+Social,Retention,59876,44995
+Email,Acquisition,59716,45093
+Display,Retention,40344,33224
+Paid Search,Retention,40209,33092
+Affiliate,Cross-sell,40206,33073
+Display,Cross-sell,40158,33164
+Social,Reactivation,40106,32930
+Display,Acquisition,39982,32901
+Paid Search,Reactivation,39883,32943
+Affiliate,Acquisition,39689,32735
+Social,Acquisition,39654,32813
+Paid Search,Acquisition,20133,18318
+Email,Cross-sell,20025,18179
+Social,Cross-sell,19954,18067
