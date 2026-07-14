@@ -1,172 +1,245 @@
-\# Multi-Touch Marketing Attribution \& Synthetic ROI Dashboard
+## 1. Project Objective
+The project analyzes customer journeys and marketing touchpoints to understand which channels and campaigns contribute to purchases.
+ 
+A customer may interact with multiple marketing touchpoints before buying. Multi-touch attribution helps avoid giving all credit to only the last click.
+## 2. Data Loading
+ 
+Loads five datasets:
 
+- events.csv
+- transactions.csv
+- customers.csv
+- products.csv
+- campaigns.csv
+Each dataset gives a different part of the business picture:
 
+- Events show customer behavior.
+- Transactions show purchases and revenue.
+- Customers show customer segments.
+- Products show product categories.
+- Campaigns show campaign/channel metadata.
+## 3. Data Validation
 
-\## Project Objective
 
 
+- Dataset shapes
+- Expected columns
+- Missing values
+- Date validity
+- Ad spend availability
 
-The objective of this project was to analyze customer journeys and marketing performance using event, transaction, customer, product, and campaign data.
+Validation prevents wrong calculations later. For example, missing revenue values should not be used in attribution.
+## 4. Missing Value Analysis
+ 
+Creates a missing value report for every dataset.
 
 
+Missing values can affect joins, revenue calculations, funnel analysis, and attribution results.
 
-The project focused on preparing attribution models and building a Power BI dashboard to show revenue contribution, funnel performance, customer/product segments, and ROI-style metrics.
+**Important interpretation:**  
+Missing product_id in events is not always an error because some page views may not be product-specific.
 
 
+## 5. Date Conversion
 
-\## Datasets Used
+ 
+Converts timestamp and date columns into datetime format.
 
 
+ 
+Attribution depends on time order. The project must know which event happened before the purchase.
 
-The project used the following datasets:
 
 
 
-\- events.csv
 
-\- transactions.csv
+## 6. Traffic Source Cleaning
 
-\- customers.csv
+ 
+Standardizes traffic_source values by removing extra spaces and fixing capitalization.
 
-\- products.csv
 
-\- campaigns.csv
+Without cleaning, values like “organic”, “Organic”, and “ORGANIC” may be counted separately.
 
 
 
-The raw data files were kept locally and were not pushed to GitHub because the events dataset was large.
 
 
+## 7. campaign_id = 0 Handling
+ 
+Creates a “No Campaign” row for campaign_id = 0.
 
-\## Work Completed
 
+campaign_id = 0 appears in events and transactions but not in the official campaigns table. It likely means organic, direct, or unattributed activity.
 
 
-\### Data Validation and Cleaning
+## 8. Transaction Enrichment
 
+Joins transactions with customers, products, and campaigns.
 
+ 
+This makes it possible to analyze revenue by channel, product category, and loyalty tier.
 
-The datasets were loaded and validated using Python/Pandas. I checked dataset shapes, missing values, timestamp fields, campaign IDs, traffic sources, and refund flags.
 
 
+## 9. Summary Metrics
 
-\### Attribution Modeling
+Creates KPI metrics such as:
 
+- Total Transactions
+- Valid Revenue Transactions
+- Unique Buyers
+- Refund Count
+- Recorded Revenue - All Transactions
+- Revenue from Non-Refunded Transactions
+- Refund-Flagged Transaction Value
 
+These metrics summarize the business at a high level for the Executive Overview page.
 
-Customer touchpoints were connected to valid purchase transactions using a 30-day lookback window.
+Instead of only saying “gross revenue” and “net revenue,” the corrected version uses clearer names because refund-flagged transactions may affect the total.
 
 
 
-Three attribution models were prepared:
+## 10. Funnel Analysis
+ 
+Counts customer journey stages:
 
+1. view
+2. click
+3. add_to_cart
+4. purchase
 
+It also calculates conversion from previous stage and drop-off count.
+ 
+The funnel shows where customers drop off before purchasing.
 
-1\. First-touch attribution
 
-2\. Last-touch attribution
+---
 
-3\. Linear attribution
+## 11. Revenue Segment Tables
 
 
+Creates:
 
-The attribution outputs were prepared by channel and campaign.
+- Revenue by channel
+- Revenue by product category
+- Revenue by loyalty tier
 
 
+These tables show which channels, categories, and customer groups contribute most to revenue.
 
-\### Metric Calculation
 
 
+---
 
-Dashboard-ready output files were created, including:
+## 12. Multi-Touch Attribution
 
 
+Connects customer touchpoints to purchase transactions using a 30-day lookback window.
 
-\- summary metrics
+Attribution models:
 
-\- revenue by channel
+- First-touch: first event gets full revenue credit.
+- Last-touch: last event gets full revenue credit.
+- Linear: revenue is split equally across all touchpoints.
 
-\- revenue by product category
 
-\- revenue by loyalty tier
+Different attribution models answer different business questions.
 
-\- funnel summary
 
-\- attribution by channel
+---
 
-\- attribution by campaign
+## 13. Why Sampling Was Used
 
 
+Uses a reproducible sample of valid transactions for attribution.
 
-\### Synthetic Ad Spend and ROI Metrics
 
+The events dataset is very large. Joining all events with all transactions on a local laptop can be slow and memory-heavy.
 
 
-The original dataset did not include real ad spend, cost, budget, CPC, or CPM data.
+---
 
+## 14. Synthetic Ad Spend
 
+Creates synthetic daily spend, impressions, clicks, CTR, CPC, and CPM using campaign metadata.
 
-To support dashboard demonstration, synthetic ad spend data was created. Based on this synthetic spend data, the following simulated metrics were calculated:
 
+The original datasets do not contain real spend, cost, budget, CPC, CPM, ROAS, or CAC data.
 
+ 
 
-\- Spend
+---
 
-\- Impressions
+## 15. Synthetic ROI Metrics
 
-\- Clicks
+Calculates:
 
-\- CTR
+- ROAS = Attributed Revenue / Spend
+- CAC = Spend / Attributed Customers
+- Cost per Conversion = Spend / Attributed Transactions
+- CPC = Spend / Clicks
+- CPM = Spend / Impressions × 1000
+- CTR = Clicks / Impressions
 
-\- CPC
+ 
+These metrics help demonstrate marketing efficiency, but only as simulated outputs.
 
-\- CPM
 
-\- ROAS
+---
 
-\- CAC
+## 16. Power BI Dashboard Pages
 
-\- Cost per conversion
+The final dashboard contains:
 
+1. Executive Overview  
+2. Attribution Comparison  
+3. Funnel Analysis  
+4. Customer/Product Segments  
+5. Synthetic ROI Analysis  
+6. Methodology and Data Limitations  
 
 
-These ROI metrics are for demonstration only and should not be treated as actual business financial results.
 
+---
 
+# Key Dashboard Insights
 
-\## Power BI Dashboard
+## Executive Overview
 
+The business has strong activity with more than 100K transactions and around 64K unique buyers. This gives enough volume for attribution and funnel analysis.
 
+## Attribution
 
-The completed Power BI dashboard includes the following pages:
+No Campaign receives the highest attributed revenue. This suggests many purchases are organic/direct or not properly tagged with campaign information.
 
+## Funnel
 
+Major drop-offs happen from view to click and from add-to-cart to purchase. This suggests landing page optimization and checkout improvement are important.
 
-1\. Executive Overview
+## Product Segments
 
-2\. Attribution Comparison
+Electronics is the strongest product category, followed by Home and Fashion. These categories should receive focused marketing attention.
 
-3\. Funnel Analysis
+## Customer Segments
 
-4\. Customer/Product Segments
+Bronze and Silver tiers contribute strongly to total revenue. This may be because they have larger customer counts. The company can target them with upgrade or retention campaigns.
 
-5\. Synthetic ROI Analysis
+## Synthetic ROI
 
-6\. Methodology and Data Limitations
+Email appears more efficient in the synthetic ROI page, while Paid Search has higher synthetic spend and CAC. However, these are demonstration insights only because spend is synthetic.
 
+---
 
+# Final Recommendations
 
-\## Key Limitation
+1. Improve campaign tracking to reduce the large No Campaign category.
+2. Use campaign IDs and UTM parameters consistently.
+3. Focus marketing on strong categories such as Electronics, Home, and Fashion.
+4. Improve call-to-action design to reduce view-to-click drop-off.
+5. Reduce cart abandonment through checkout simplification and retargeting.
+6. Create loyalty upgrade campaigns for Bronze and Silver customers.
+7. Collect real ad spend data in the future for accurate ROAS and CAC.
+8. Compare first-touch, last-touch, and linear attribution before making budget decisions.
 
-
-
-Real ad spend data was not available in the original datasets. Therefore, ROAS, CAC, CPC, CPM, and cost-per-conversion values are based on synthetic ad spend data created for dashboard demonstration.
-
-
-
-\## Final Outcome
-
-
-
-By the end of the project, the full workflow was completed from data validation to attribution modeling, metric calculation, synthetic ROI preparation, and Power BI dashboard reporting.
-
+---
