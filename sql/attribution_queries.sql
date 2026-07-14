@@ -1,8 +1,39 @@
--- Week 2 / Week 3: Multi-Touch Attribution SQL Logic
--- Purpose: Use SQL joins and window functions to sequence customer touchpoints
--- before each transaction and calculate first-touch, last-touch, and linear attribution.
+-- Clean Multi-Touch Attribution SQL Logic
+-- Purpose:
+--   Sequence customer touchpoints before purchase and calculate
+--   first-touch, last-touch, and linear attribution.
+--
+-- Notes:
+--   1. This version uses SQLite-style datetime syntax:
+--        datetime(t.timestamp, '-30 days')
+--   2. If using SQL Server, replace it with:
+--        DATEADD(day, -30, t.timestamp)
+--   3. refund_flag = 0 and gross_revenue IS NOT NULL are used to keep valid purchases.
 
-WITH touchpoints AS (
+WITH campaigns_extended AS (
+    SELECT
+        campaign_id,
+        channel,
+        objective,
+        start_date,
+        end_date,
+        target_segment,
+        expected_uplift
+    FROM campaigns
+
+    UNION ALL
+
+    SELECT
+        0 AS campaign_id,
+        'No Campaign' AS channel,
+        'Organic/Direct/Unattributed' AS objective,
+        NULL AS start_date,
+        NULL AS end_date,
+        'Unknown' AS target_segment,
+        0 AS expected_uplift
+),
+
+touchpoints AS (
     SELECT
         t.transaction_id,
         t.customer_id,
@@ -19,12 +50,13 @@ WITH touchpoints AS (
         COALESCE(c.objective, 'Organic/Direct/Unattributed') AS objective
 
     FROM transactions t
-    JOIN events e
+
+    INNER JOIN events e
         ON t.customer_id = e.customer_id
        AND e.timestamp <= t.timestamp
        AND e.timestamp >= datetime(t.timestamp, '-30 days')
 
-    LEFT JOIN campaigns c
+    LEFT JOIN campaigns_extended c
         ON e.campaign_id = c.campaign_id
 
     WHERE t.refund_flag = 0
@@ -50,33 +82,38 @@ sequenced_touchpoints AS (
         ) AS total_touches
 
     FROM touchpoints
+),
+
+attribution AS (
+    SELECT
+        transaction_id,
+        customer_id,
+        campaign_id,
+        channel,
+        objective,
+        traffic_source,
+        event_type,
+        event_time,
+        transaction_time,
+        gross_revenue,
+        touch_order_asc,
+        touch_order_desc,
+        total_touches,
+
+        CASE
+            WHEN touch_order_asc = 1 THEN gross_revenue
+            ELSE 0
+        END AS first_touch_revenue,
+
+        CASE
+            WHEN touch_order_desc = 1 THEN gross_revenue
+            ELSE 0
+        END AS last_touch_revenue,
+
+        gross_revenue * 1.0 / total_touches AS linear_revenue
+
+    FROM sequenced_touchpoints
 )
 
-SELECT
-    transaction_id,
-    customer_id,
-    campaign_id,
-    channel,
-    objective,
-    traffic_source,
-    event_type,
-    event_time,
-    transaction_time,
-    gross_revenue,
-    touch_order_asc,
-    touch_order_desc,
-    total_touches,
-
-    CASE
-        WHEN touch_order_asc = 1 THEN gross_revenue
-        ELSE 0
-    END AS first_touch_revenue,
-
-    CASE
-        WHEN touch_order_desc = 1 THEN gross_revenue
-        ELSE 0
-    END AS last_touch_revenue,
-
-    gross_revenue * 1.0 / total_touches AS linear_revenue
-
-FROM sequenced_touchpoints;
+SELECT *
+FROM attribution;
