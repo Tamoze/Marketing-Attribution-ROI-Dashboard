@@ -431,3 +431,21 @@ This project strengthened practical experience in:
 # 19. Conclusion
 
 The Marketing Attribution ROI Dashboard successfully transformed raw marketing and customer interaction data into meaningful business insights. By integrating Python for data preparation, Power BI for visualization, and attribution modeling for advanced marketing analysis, the project provides decision-makers with a comprehensive platform for evaluating campaign performance, optimizing marketing investments, and supporting strategic business decisions through data-driven insights.
+
+# Dashboard Preview
+
+## Executive Dashboard
+
+![Executive Dashboard](images/executive_dashboard.png)
+
+## Customer Conversion Funnel
+
+![Customer Funnel](images/customer_funnel.png)
+
+## Campaign Performance
+
+![Campaign Performance](images/campaign_performance.png)
+
+## Attribution Analysis
+
+![Attribution Analysis](images/attribution_analysis.png)
